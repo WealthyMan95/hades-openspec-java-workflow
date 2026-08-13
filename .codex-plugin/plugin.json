@@ -1,15 +1,15 @@
 {
   "name": "hades-openspec-workflow",
-  "version": "0.2.0",
-  "description": "PRD-first OpenSpec workflow for Codex: analyze requirements, create split PRD documents, generate OpenSpec artifacts, apply confirmed plans, review, archive, and guard internal DB MCP access.",
+  "version": "0.3.0",
+  "description": "PRD 优先的 OpenSpec 交付工作流：需求分析、拆分 PRD、生成 OpenSpec、确认后实现、验证、Review、归档，并保护内部数据库 MCP 访问。",
   "author": {
     "name": "Ethan"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Hades OpenSpec Workflow",
-    "shortDescription": "PRD-first OpenSpec delivery workflow for Codex.",
-    "longDescription": "Hades OpenSpec Workflow enforces a PRD-first delivery loop: requirement analysis, impact-based Chinese PRD document groups, user confirmation, OpenSpec artifact generation, confirmation-gated implementation, verification, review, archive, and safe internal database MCP access. It does not create GitHub Issues.",
+    "shortDescription": "先写 PRD，再生成 OpenSpec；确认后实现、验证、Review，并保护内部数据库 MCP。",
+    "longDescription": "Hades OpenSpec Workflow 固化一条 PRD 优先的交付闭环：需求分析、按影响范围拆分中文 PRD 文档、用户确认、生成 OpenSpec artifacts、确认后实现、验证、Review、归档，以及安全的内部数据库 MCP 访问。它不会创建 GitHub Issues。",
     "developerName": "Ethan",
     "category": "Productivity",
     "capabilities": [
@@ -26,6 +26,9 @@
       "Process this request through Hades OpenSpec Workflow.",
       "Create PRD docs, then propose an OpenSpec change.",
       "Apply the confirmed OpenSpec plan."
-    ]
+    ],
+    "brandColor": "#00AEEF",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png"
   }
 }
