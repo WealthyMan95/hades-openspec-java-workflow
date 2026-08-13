@@ -10,6 +10,7 @@ Hades OpenSpec Workflow 是一个面向 Codex 的 PRD-first 工作流插件。�
 - AI 容易跳过需求分析，直接改代码。
 - PRD、OpenSpec 和聊天里的口头决策容易不一致。
 - OpenSpec 的 propose、apply、archive 指令需要能被自然语言触发。
+- 内部数据库 MCP 需要安全边界，避免 AI 直接查敏感数据或执行危险 SQL。
 - 实现完成后需要明确停下来提示 review，而不是自动归档。
 - 团队成员需要能从 GitHub clone 后安装同一套 Codex workflow。
 
@@ -48,6 +49,7 @@ openspec/changes/<change-name>/...
 | `openspec-planner` | 执行 `/opsx:propose`，创建 change 并生成 artifacts。 |
 | `implementation-runner` | 执行 `/opsx:apply`，按 tasks 实现并更新任务勾选。 |
 | `review-gate` | 实现和验证后提示 review，处理反馈，控制归档。 |
+| `db-query-guard` | 约束内部数据库 MCP 查询、写入确认、DELETE/DDL 安全和证据同步。 |
 
 在 Codex 中安装后，skill 名称通常会以插件名前缀暴露，例如：
 
@@ -72,9 +74,20 @@ hades-openspec-workflow:implementation-runner
 | Stripe | 读取支付、订阅、退款上下文 | 否 |
 | Cloudflare | 检查部署、DNS、Workers、Pages | 否 |
 | Canva | 读取或辅助设计资产 | 否 |
-| 内部数据库 MCP | 查询内部业务数据、辅助定位 | 否 |
+| 内部数据库 MCP | 查询内部业务数据、辅助定位 | 提供模板，不提供真实密钥 |
 
 如果 connector 不可用，插件要求 Codex 明确说明缺少的能力，并继续基于用户提供的信息推进 PRD 或暂停需要外部读取的步骤。
+
+内部数据库 MCP 已提供模板：
+
+```text
+.mcp.example.json
+.env.example
+数据库MCP配置指南.md
+skills/db-query-guard/SKILL.md
+```
+
+真实数据库 host、账号、密码、token 不应提交到 GitHub。安装后在本地 `.env`、系统 secret 或组织 MCP 配置中填写。
 
 ## 快速安装
 
@@ -162,6 +175,7 @@ README.md
 
 - [团队安装指南.md](./团队安装指南.md)
 - [安装配置指南.md](./安装配置指南.md)
+- [数据库MCP配置指南.md](./数据库MCP配置指南.md)
 - [使用说明.md](./使用说明.md)
 - [流程图.md](./流程图.md)
 - [试运行指南.md](./试运行指南.md)

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "internal-db-readonly": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres"
+      ],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "${HADES_DB_READONLY_URL}"
+      }
+    }
+  }
+}

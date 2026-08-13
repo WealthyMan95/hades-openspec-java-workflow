@@ -1,6 +1,8 @@
 .DS_Store
 .env
 .env.*
+!.env.example
+.mcp.json
 node_modules/
 dist/
 build/
