@@ -1,6 +1,6 @@
 # Hades OpenSpec Workflow
 
-Hades OpenSpec Workflow 是一个面向 Codex 的 PRD-first 工作流插件。它把来自 Asana、Notion、用户对话、Figma、Stripe、Cloudflare、GitHub PR、内部数据库等入口的信息，统一推进为中文 PRD、OpenSpec change、确认后的实现、验证、review 和归档。
+Hades OpenSpec Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交付工作流插件。它把来自 Asana、Notion、用户对话、Figma、Stripe、Cloudflare、GitHub PR、内部数据库等入口的信息，统一推进为中文 PRD、OpenSpec change、确认后的实现、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate 和归档。
 
 这个插件不创建 GitHub Issues。GitHub 只用于仓库访问、分支、提交、PR 和代码审查。
 
@@ -11,6 +11,7 @@ Hades OpenSpec Workflow 是一个面向 Codex 的 PRD-first 工作流插件。�
 - PRD、OpenSpec 和聊天里的口头决策容易不一致。
 - OpenSpec 的 propose、apply、archive 指令需要能被自然语言触发。
 - 内部数据库 MCP 需要安全边界，避免 AI 直接查敏感数据或执行危险 SQL。
+- Java/Spring/MyBatis/MySQL 开发需要编码规范、服务分层、SQL 性能、安全评审、测试策略和 PR 质量门禁。
 - 实现完成后需要明确停下来提示 review，而不是自动归档。
 - 团队成员需要能从 GitHub clone 后安装同一套 Codex workflow。
 
@@ -50,6 +51,18 @@ openspec/changes/<change-name>/...
 | `implementation-runner` | 执行 `/opsx:apply`，按 tasks 实现并更新任务勾选。 |
 | `review-gate` | 实现和验证后提示 review，处理反馈，控制归档。 |
 | `db-query-guard` | 约束内部数据库 MCP 查询、写入确认、DELETE/DDL 安全和证据同步。 |
+| `coding-discipline` | AI 写代码纪律：少猜、小改、不越界、可验证。 |
+| `java-coding-standard` | Java/Spring/MyBatis 编码规范。 |
+| `springboot-service-patterns` | Spring Boot Controller/Service/Mapper、事务、分页、异步、外部调用模式。 |
+| `springboot-security-review` | Spring Boot 接口、权限、输入、SQL 注入、密钥、敏感日志安全评审。 |
+| `java-test-strategy` | Java 单测、集成测试、回归测试和手动验证策略。 |
+| `mysql-db-guard` | MySQL MCP、AI 数据库账号、写入、DELETE、DDL、EXPLAIN 安全规则。 |
+| `sql-performance-review` | MyBatis/SQL/list/search/export/pagination/sorting/index 性能评审。 |
+| `java-backend-review` | Java/Spring/MyBatis 后端专项代码审查。 |
+| `java-build-fix` | Maven/Gradle/Spring Boot 构建失败最小修复流程。 |
+| `codegraph-context-guard` | CodeGraph 影响面、调用链、符号定位规则。 |
+| `pr-quality-gate` | PR 前质量门禁：构建、测试、OpenSpec、风险、回滚、文档同步。 |
+| `large-refactor-workflow` | 大重构 Discovery、RFC、测试基线、phase 拆分和小 PR 流程。 |
 
 在 Codex 中安装后，skill 名称通常会以插件名前缀暴露，例如：
 
@@ -78,13 +91,16 @@ hades-openspec-workflow:implementation-runner
 
 如果 connector 不可用，插件要求 Codex 明确说明缺少的能力，并继续基于用户提供的信息推进 PRD 或暂停需要外部读取的步骤。
 
-内部数据库 MCP 已提供模板：
+Java/MySQL 交付模板已提供：
 
 ```text
 .mcp.example.json
 .env.example
 数据库MCP配置指南.md
-skills/db-query-guard/SKILL.md
+assets/templates/
+docs/workflow/大需求分段审核与高风险复查协议.md
+skills/mysql-db-guard/SKILL.md
+skills/sql-performance-review/SKILL.md
 ```
 
 真实数据库 host、账号、密码、token 不应提交到 GitHub。安装后在本地 `.env`、系统 secret 或组织 MCP 配置中填写。

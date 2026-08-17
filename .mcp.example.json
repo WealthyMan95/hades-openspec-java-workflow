@@ -1,13 +1,13 @@
 {
   "mcpServers": {
-    "internal-db-readonly": {
+    "internal-mysql-readonly": {
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-postgres"
+        "<replace-with-your-mysql-mcp-server-package>"
       ],
       "env": {
-        "POSTGRES_CONNECTION_STRING": "${HADES_DB_READONLY_URL}"
+        "MYSQL_CONNECTION_STRING": "${HADES_MYSQL_READONLY_URL}"
       }
     }
   }

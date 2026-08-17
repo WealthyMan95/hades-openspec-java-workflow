@@ -7,6 +7,8 @@ description: Use when a request involves internal database MCP access, schema in
 
 Use database access as evidence, not as a shortcut around PRD and OpenSpec.
 
+For Java/Spring Boot/MyBatis/MySQL work, prefer `mysql-db-guard`. This generic guard remains the fallback for non-MySQL internal database MCP access.
+
 ## Preconditions
 
 - Use only an approved MCP server, connector, or local read-only tool.

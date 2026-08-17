@@ -26,6 +26,12 @@ Then tell the user:
 ## Review Actions
 
 - If the user requests code review, review bugs, risks, regressions, and missing tests first.
+- For Java/Spring Boot/MyBatis code review, apply `java-backend-review`.
+- For API/auth/permission/sensitive-data/import-export/config/SQL-injection risk, apply `springboot-security-review`.
+- For Mapper/SQL/list/search/statistics/export/pagination/sorting/index changes, apply `sql-performance-review`.
+- For MySQL MCP, migrations, write SQL, DELETE/DDL, EXPLAIN, or database evidence, apply `mysql-db-guard`.
+- For test evidence and missing coverage, apply `java-test-strategy`.
+- For PR readiness, apply `pr-quality-gate` before merge/archive readiness is claimed.
 - If the user provides review feedback, validate it before changing code.
 - If feedback changes requirements, invoke `sync-guard` before continuing.
 - If the user asks to archive, validate and archive through OpenSpec.

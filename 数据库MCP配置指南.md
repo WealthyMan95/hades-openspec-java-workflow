@@ -1,12 +1,15 @@
 # 数据库 MCP 配置指南
 
-Hades OpenSpec Workflow 支持内部数据库 MCP 的规则和模板，但不会把真实数据库账号、host、密码或 token 打包进 GitHub 仓库。
+Hades OpenSpec Workflow 以 Java/Spring/MyBatis/MySQL 交付为主，优先使用 `mysql-db-guard` 约束 MySQL MCP、SQL、EXPLAIN、写入、DDL 和回滚。非 MySQL 的内部数据库 MCP 可以使用 `db-query-guard` 作为通用兜底。
+
+仓库只提供规则和模板，不会把真实数据库账号、host、密码或 token 打包进 GitHub。
 
 发布到 GitHub 前可以保留：
 
 ```text
 .mcp.example.json
 .env.example
+skills/mysql-db-guard/SKILL.md
 skills/db-query-guard/SKILL.md
 ```
 
@@ -86,18 +89,18 @@ cp .env.example .env
 
 如果你的 Codex 或 MCP 启动方式不会自动读取 `.env`，请把变量写入 shell profile、系统密钥管理器或 Codex 支持的本地 secret 配置中。
 
-## Postgres 示例
+## MySQL-first 示例
 
-`.mcp.example.json` 默认演示 Postgres MCP：
+`.mcp.example.json` 默认使用 MySQL MCP 的占位包名。不同团队选用的 MySQL MCP server 包名和参数不完全相同，安装前必须把 `<replace-with-your-mysql-mcp-server-package>` 替换成团队实际采用的 server。
 
 ```json
 {
   "mcpServers": {
-    "internal-db-readonly": {
+    "internal-mysql-readonly": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "args": ["-y", "<replace-with-your-mysql-mcp-server-package>"],
       "env": {
-        "POSTGRES_CONNECTION_STRING": "${HADES_DB_READONLY_URL}"
+        "MYSQL_CONNECTION_STRING": "${HADES_MYSQL_READONLY_URL}"
       }
     }
   }
@@ -107,18 +110,31 @@ cp .env.example .env
 示例环境变量：
 
 ```bash
+HADES_MYSQL_READONLY_URL=mysql://readonly_user:password@localhost:3306/app_db
+```
+
+## 非 MySQL 示例
+
+如果团队使用 Postgres、SQL Server 或其他数据库，请将 `.mcp.json` 改成对应 MCP server，并使用 `db-query-guard` 的通用安全规则。也建议保留同样的环境变量风格：
+
+```bash
 HADES_DB_READONLY_URL=postgresql://readonly_user:password@localhost:5432/app_db
 ```
 
-## MySQL 示例
+通用数据库 MCP 仍然必须遵守只读优先、敏感字段脱敏、写入前确认、DDL 默认拒绝等规则。
 
-如果团队使用 MySQL，请将 `.mcp.json` 改成你选定的 MySQL MCP server。不同 server 的包名和参数不完全相同，按该 server 文档填写。
+## MySQL / MyBatis 额外规则
 
-建议保留同样的环境变量风格：
+涉及 Java/Spring/MyBatis/MySQL 时，除通用查询安全规则外，还要记录或验证：
 
-```bash
-HADES_MYSQL_READONLY_URL=mysql://readonly_user:password@localhost:3306/app_db
-```
+- Mapper SQL 是否避免 `SELECT *`、无界查询、N+1 查询。
+- 列表、搜索、导出、分页、排序是否有索引和稳定排序。
+- `EXPLAIN` 证据是否覆盖核心 SQL，是否存在全表扫描、Using filesort、Using temporary 等风险。
+- 写 SQL 是否有明确 `WHERE`、影响行数预估、回滚 SQL 或补偿方案。
+- 新增或调整索引是否评估写入成本、锁表风险和回滚。
+- 相关结论是否同步到 PRD 数据库设计、OpenSpec design/tasks 和 review 证据。
+
+MySQL 查询、DDL、写入、DELETE、EXPLAIN 或数据库证据优先触发 `mysql-db-guard`；MyBatis SQL 性能评审触发 `sql-performance-review`。
 
 ## 查询安全规则
 

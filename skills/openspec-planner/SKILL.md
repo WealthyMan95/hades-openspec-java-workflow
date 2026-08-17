@@ -27,6 +27,14 @@ Before creating OpenSpec:
 3. Confirm all affected optional PRD split docs exist.
 4. Confirm the user approved the PRD document group.
 
+For Java/Spring Boot/MyBatis/MySQL work, ensure the OpenSpec artifacts reflect:
+
+- service layering, transactions, idempotency, pagination, async jobs, external calls, and observability from `springboot-service-patterns`
+- Java style, DTO/VO/PO boundaries, null safety, exceptions, logging, and MyBatis constraints from `java-coding-standard`
+- auth, authorization, sensitive data, SQL injection, CORS/CSRF, file import/export, secrets, and dependency risks from `springboot-security-review`
+- SQL shape, indexes, pagination/sorting, N+1 avoidance, and EXPLAIN evidence expectations from `sql-performance-review`
+- MySQL access/write/DDL safety and rollback requirements from `mysql-db-guard`
+
 ## Procedure
 
 1. Derive or accept a lowercase kebab-case change name.

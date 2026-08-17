@@ -7,6 +7,18 @@ description: Use when a request may come from Asana, Notion, user conversation, 
 
 Route incoming work into the Hades OpenSpec Workflow.
 
+## Project Bias
+
+For Java/Spring Boot/MyBatis/MySQL projects, Hades must also apply the Java delivery guardrails:
+
+- `coding-discipline` before code edits or code review.
+- `java-coding-standard` when writing or reviewing Java code.
+- `springboot-service-patterns` when designing or implementing backend services.
+- `springboot-security-review` when APIs, auth, permissions, sensitive data, imports/exports, SQL, or configs are touched.
+- `mysql-db-guard` and `sql-performance-review` when MySQL, MyBatis, Mapper, SQL, list/search/export, pagination, sorting, indexes, or EXPLAIN evidence are involved.
+- `codegraph-context-guard` when `.codegraph/` exists or impact analysis is needed.
+- `java-test-strategy`, `java-backend-review`, and `pr-quality-gate` before PR/merge readiness.
+
 ## Core Rule
 
 Use this order for code-changing work:

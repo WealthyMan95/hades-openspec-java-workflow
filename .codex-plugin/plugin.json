@@ -1,15 +1,15 @@
 {
   "name": "hades-openspec-workflow",
-  "version": "0.3.0",
-  "description": "PRD 优先的 OpenSpec 交付工作流：需求分析、拆分 PRD、生成 OpenSpec、确认后实现、验证、Review、归档，并保护内部数据库 MCP 访问。",
+  "version": "0.4.0+codex.20260817013311",
+  "description": "面向 Java/Spring/MyBatis/MySQL 的 PRD 优先 OpenSpec 交付工作流：需求分析、拆分 PRD、OpenSpec、实现、验证、Review、PR Gate 和归档。",
   "author": {
     "name": "Ethan"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Hades OpenSpec Workflow",
-    "shortDescription": "先写 PRD，再生成 OpenSpec；确认后实现、验证、Review，并保护内部数据库 MCP。",
-    "longDescription": "Hades OpenSpec Workflow 固化一条 PRD 优先的交付闭环：需求分析、按影响范围拆分中文 PRD 文档、用户确认、生成 OpenSpec artifacts、确认后实现、验证、Review、归档，以及安全的内部数据库 MCP 访问。它不会创建 GitHub Issues。",
+    "shortDescription": "Java/Spring/MyBatis/MySQL 的 PRD-first OpenSpec 交付、Review 和质量门禁。",
+    "longDescription": "Hades OpenSpec Workflow 固化一条面向 Java/Spring/MyBatis/MySQL 的 PRD 优先交付闭环：需求分析、按影响范围拆分中文 PRD 文档、用户确认、生成 OpenSpec artifacts、确认后实现、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate、归档，以及安全的内部数据库 MCP 访问。它不会创建 GitHub Issues。",
     "developerName": "Ethan",
     "category": "Productivity",
     "capabilities": [
@@ -20,12 +20,22 @@
       "implementation",
       "review",
       "archive",
-      "database-mcp"
+      "database-mcp",
+      "java",
+      "spring-boot",
+      "mybatis",
+      "mysql",
+      "sql-performance",
+      "security",
+      "codegraph",
+      "testing",
+      "quality-gate",
+      "refactor"
     ],
     "defaultPrompt": [
-      "Process this request through Hades OpenSpec Workflow.",
-      "Create PRD docs, then propose an OpenSpec change.",
-      "Apply the confirmed OpenSpec plan."
+      "按 Hades PRD-first + OpenSpec 流程处理这个 Java 需求。",
+      "PRD 已确认，请生成 OpenSpec 并包含 Java/MySQL 风险。",
+      "OpenSpec 已确认，请执行计划并进入 Review Gate。"
     ],
     "brandColor": "#00AEEF",
     "composerIcon": "./assets/icon.png",
