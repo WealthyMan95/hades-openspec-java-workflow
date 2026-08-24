@@ -1,11 +1,11 @@
 ---
 name: review-gate
-description: Use after implementing and verifying an OpenSpec change, when prompting the user for review, running code review, handling review feedback, or deciding whether to revise, continue, or archive.
+description: Use after implementing, post-implementation self-checking, and verifying an OpenSpec change, when prompting the user for review, running code review, handling review feedback, or deciding whether to revise, continue, or archive.
 ---
 
 # Review Gate
 
-After implementation and verification, stop for review-oriented user choice.
+After implementation, `post-implementation-check`, and verification, stop for review-oriented user choice.
 
 ## Required Summary
 
@@ -15,12 +15,13 @@ Report:
 - tasks completed this session
 - overall task progress
 - verification commands and results
+- post-implementation self-check result
 - remaining risks or skipped checks
 
 Then tell the user:
 
 ```text
-改动已完成并通过验证，现在可以进行 review。你可以让我执行代码审查、根据反馈修改，或准备归档计划。
+改动已完成、实现后自检已通过并通过验证，现在可以进行 review。你可以让我执行代码审查、根据反馈修改，或准备归档计划。
 ```
 
 ## Review Actions

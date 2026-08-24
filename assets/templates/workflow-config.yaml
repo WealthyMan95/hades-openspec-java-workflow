@@ -21,7 +21,7 @@ worktree:
   branch_template: "codex/{change_id}/{task_id}-{slug}"
 
 budget:
-  max_workers: 5
+  max_workers: 6
   max_implementation_concurrency: 2
   max_claude_reviews: 1
   estimated_tokens: 50000
@@ -77,6 +77,8 @@ concurrency_groups:
   module-a:
     max_parallel: 1
   module-b:
+    max_parallel: 1
+  post-check:
     max_parallel: 1
   verification:
     max_parallel: 1

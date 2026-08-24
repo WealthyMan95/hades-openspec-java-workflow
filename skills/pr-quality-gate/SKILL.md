@@ -1,6 +1,6 @@
 ---
 name: pr-quality-gate
-description: Use before opening or merging a PR for a Java/Spring/MyBatis requirement delivered through Hades PRD and OpenSpec. Checks build, tests, OpenSpec tasks, PR description, review readiness, API/SQL performance evidence, risk, rollback, and documentation sync.
+description: Use before opening or merging a PR for a Java/Spring/MyBatis requirement delivered through Hades PRD and OpenSpec. Checks post-implementation self-check, build, tests, OpenSpec tasks, PR description, review readiness, API/SQL performance evidence, risk, rollback, and documentation sync.
 ---
 
 # PR Quality Gate
@@ -17,6 +17,7 @@ PR 前门禁。目标：合并前把“能不能交付”说清楚。
 - 已检查相关既有 specs、active changes、历史 PRD、Asana/Notion/Figma/用户对话等来源记录，且 `design.md` 写明关系。
 - 没有未说明的旧验收标准破坏；如有破坏，已记录迁移、回滚和确认。
 - `tasks.md` 已完成或明确剩余项。
+- 已完成 `post-implementation-check`，且不存在 `NEEDS_SYNC`、`NEEDS_FIX` 或 `NEEDS_EVIDENCE` 未处理项。
 - 偏差已回写 PRD/OpenSpec。
 - 每个代码改动都能对应 PRD、OpenSpec 或 `tasks.md`。
 - 没有未要求的功能、无关重构或过度抽象。
@@ -69,6 +70,7 @@ OpenSpec change-id:
 
 ## 验证结果
 
+实现后自检:
 构建:
 单测:
 集成测试:
@@ -146,6 +148,8 @@ CONDITIONAL：可 PR，但需在描述里标明风险
 本 skill 的 `BLOCKED` 是 PR 前阻断结论；是否升级为自动化审计或 CI 硬门禁，需试运行后决定。
 
 - 有 Java/Spring/MyBatis 行为变更，且项目有 `.codegraph/`，但未完成 CodeGraph impact：`BLOCKED`。
+- 代码已变更但未完成 `post-implementation-check`：`BLOCKED`。
+- `post-implementation-check` 存在未处理的 `NEEDS_SYNC`、`NEEDS_FIX` 或 `NEEDS_EVIDENCE`：`BLOCKED`。
 - 涉及 Mapper/SQL、列表/搜索/统计/导出接口、分页排序或动态查询，但未完成 `sql-performance-review`：`BLOCKED`。
 - `sql-performance-review` 存在 P0/P1 未修复项：`BLOCKED`。
 - 高风险关键 SQL 缺少 `EXPLAIN`，且没有明确低风险理由：`BLOCKED`。

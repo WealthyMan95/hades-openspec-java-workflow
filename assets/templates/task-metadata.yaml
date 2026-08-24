@@ -7,7 +7,7 @@ task_id: ""
 change_id: ""
 title: ""
 slug: ""
-type: "Implementation" # Discovery | OpenSpec | Implementation | Test | Documentation | Review
+type: "Implementation" # Discovery | OpenSpec | Implementation | PostCheck | Test | Documentation | Review
 owner: ""
 priority: "normal" # high | normal | low
 status: "pending"

@@ -1,6 +1,6 @@
 # Hades OpenSpec Workflow
 
-Hades OpenSpec Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交付工作流插件。它把来自 Asana、Notion、用户对话、Figma、Stripe、Cloudflare、GitHub PR、内部数据库等入口的信息，统一推进为中文 PRD、OpenSpec change、确认后的实现、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate 和归档。
+Hades OpenSpec Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交付工作流插件。它把来自 Asana、Notion、用户对话、Figma、Stripe、Cloudflare、GitHub PR、内部数据库等入口的信息，统一推进为中文 PRD、OpenSpec change、确认后的实现、实现后自检、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate 和归档。
 
 这个插件不创建 GitHub Issues。GitHub 只用于仓库访问、分支、提交、PR 和代码审查。
 
@@ -12,6 +12,7 @@ Hades OpenSpec Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交�
 - OpenSpec 的 propose、apply、archive 指令需要能被自然语言触发。
 - 内部数据库 MCP 需要安全边界，避免 AI 直接查敏感数据或执行危险 SQL。
 - Java/Spring/MyBatis/MySQL 开发需要编码规范、服务分层、SQL 性能、安全评审、测试策略和 PR 质量门禁。
+- 代码写完后需要先自检 PRD/OpenSpec/tasks 覆盖、范围漂移、文档同步和证据缺口。
 - 实现完成后需要明确停下来提示 review，而不是自动归档。
 - 团队成员需要能从 GitHub clone 后安装同一套 Codex workflow。
 
@@ -26,6 +27,7 @@ Hades OpenSpec Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交�
 -> 生成 implementation 所需 artifacts
 -> 用户确认 OpenSpec
 -> 执行实现
+-> 实现后自检
 -> 验证
 -> 提示用户 review
 -> 根据用户输入继续修改、审查、完成或归档
@@ -49,7 +51,8 @@ openspec/changes/<change-name>/...
 | `openspec-command-router` | 把自然语言和 `/opsx:*` 映射到 OpenSpec CLI 操作。 |
 | `openspec-planner` | 执行 `/opsx:propose`，创建 change 并生成 artifacts。 |
 | `implementation-runner` | 执行 `/opsx:apply`，按 tasks 实现并更新任务勾选。 |
-| `review-gate` | 实现和验证后提示 review，处理反馈，控制归档。 |
+| `post-implementation-check` | 代码写完后对照 PRD/OpenSpec/tasks 与 diff，检查漏做、多做、文档同步、测试、EXPLAIN 和回滚证据。 |
+| `review-gate` | 实现后自检和验证后提示 review，处理反馈，控制归档。 |
 | `db-query-guard` | 约束内部数据库 MCP 查询、写入确认、DELETE/DDL 安全和证据同步。 |
 | `coding-discipline` | AI 写代码纪律：少猜、小改、不越界、可验证。 |
 | `java-coding-standard` | Java/Spring/MyBatis 编码规范。 |

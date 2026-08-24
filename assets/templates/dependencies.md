@@ -27,8 +27,9 @@ pending / ready / running / blocked / failed / retrying / done / accepted / aban
 | 002 | OpenSpec design | 001 | 003,004 | yes | pending |  | high | contract-design |
 | 003 | module-a implementation | 001,002 | 005 | yes | pending |  | normal | module-a |
 | 004 | module-b implementation | 001,002 | 005 | yes | pending |  | normal | module-b |
-| 005 | regression test | 003,004 | 006 | yes | pending |  | high | verification |
-| 006 | Claude review | 005 | - | yes | pending |  | normal | review |
+| 005 | post-implementation self-check | 003,004 | 006 | yes | pending |  | high | post-check |
+| 006 | regression test | 005 | 007 | yes | pending |  | high | verification |
+| 007 | Claude review | 006 | - | yes | pending |  | normal | review |
 
 ## 数据流和契约
 
@@ -38,8 +39,9 @@ pending / ready / running / blocked / failed / retrying / done / accepted / aban
 | 002 | 001 result, PRD | proposal/design/tasks/specs | API/DTO/SQL/配置约束 |
 | 003 | 001 result, 002 contracts | 模块 A patch, 单测 | 模块 A 行为边界 |
 | 004 | 001 result, 002 contracts | 模块 B patch, 单测 | 模块 B 行为边界 |
-| 005 | 003 result, 004 result | 测试报告, 缺口清单 | 回归验证结论 |
-| 006 | 005 result, final diff | Claude 审查结果 | 阻塞问题清单 |
+| 005 | 003 result, 004 result, PRD, OpenSpec, tasks, final diff | 实现后自检结果 | 覆盖、漂移、同步、证据缺口结论 |
+| 006 | 005 result | 测试报告, 缺口清单 | 回归验证结论 |
+| 007 | 006 result, final diff | Claude 审查结果 | 阻塞问题清单 |
 
 ## 文件锁
 
@@ -58,8 +60,9 @@ pending / ready / running / blocked / failed / retrying / done / accepted / aban
 | 002 | openspec/changes/<change-id>/** |
 | 003 | src/main/java/.../ModuleA*, src/test/java/.../ModuleA* |
 | 004 | src/main/java/.../ModuleB*, src/test/java/.../ModuleB* |
-| 005 | src/test/** |
-| 006 |  |
+| 005 |  |
+| 006 | src/test/** |
+| 007 |  |
 
 ## Mermaid 依赖图
 
@@ -69,8 +72,9 @@ flowchart TD
     T002["002 OpenSpec design"]
     T003["003 module-a implementation"]
     T004["004 module-b implementation"]
-    T005["005 regression test"]
-    T006["006 Claude review"]
+    T005["005 post-implementation self-check"]
+    T006["006 regression test"]
+    T007["007 Claude review"]
 
     T001 --> T002
     T001 --> T003
@@ -79,6 +83,7 @@ flowchart TD
     T003 --> T005
     T004 --> T005
     T005 --> T006
+    T006 --> T007
 ```
 
 ## 调度记录

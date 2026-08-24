@@ -38,14 +38,15 @@
 | 002 | OpenSpec | Codex | 规格和任务拆分 | yes |
 | 003 | Implementation | Codex | 模块 A 实现 | yes |
 | 004 | Implementation | Codex | 模块 B 实现 | yes |
-| 005 | Test | Codex | 测试补齐和回归 | yes |
-| 006 | Review | Claude | 代码审查和风险挑战 | optional |
+| 005 | PostCheck | Leader Codex | 实现后自检：覆盖、漂移、同步、证据 | yes |
+| 006 | Test | Codex | 测试补齐和回归 | yes |
+| 007 | Review | Claude | 代码审查和风险挑战 | optional |
 
 ## 预算和限制
 
 | 项 | 值 | 说明 |
 |---|---:|---|
-| max_workers | 5 | Codex worker 上限，不含可选 Claude Review |
+| max_workers | 6 | Codex worker 上限，不含可选 Claude Review |
 | max_implementation_concurrency | 2 | Implementation worker 并发上限 |
 | max_claude_reviews | 1 | 默认最终审查一次 |
 | estimated_tokens | 50000 | 粗略预算 |
@@ -83,5 +84,6 @@
 - 所有必须任务状态为 `accepted`。
 - `result-metadata.yaml` 的最终状态为 `accepted`；如果是 `failed` 或 `abandoned`，失败或放弃原因已记录。
 - 构建和测试按本文件要求完成。
+- 实现后自检已归档，且无未处理的同步、修复或证据缺口。
 - Claude review 已归档，或明确记录未启用原因。
 - 合并冲突和 Leader 决策已记录。

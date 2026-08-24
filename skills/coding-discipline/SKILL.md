@@ -11,7 +11,7 @@ Hades 的 AI 写代码纪律。它是上层行为规范，不替代 Java 编码�
 
 1. repo 本地规则：`AGENTS.md`、formatter、Checkstyle、Spotless、PMD、Sonar、CI。
 2. 需求事实来源：PRD、OpenSpec、`tasks.md`、用户确认过的当前对话变更。
-3. Hades workflow：PRD-first、OpenSpec-first、确认后实现、Review Gate、归档需用户触发。
+3. Hades workflow：PRD-first、OpenSpec-first、确认后实现、实现后自检、Review Gate、归档需用户触发。
 4. 本 skill：少猜、小改、简单、可验证。
 5. Java / Spring / MySQL / Security 专项规范。
 
@@ -65,6 +65,7 @@ Hades 的 AI 写代码纪律。它是上层行为规范，不替代 Java 编码�
 
 完成前必须给证据：
 
+- 实现后自检结果。
 - 编译结果。
 - 单测 / 集成测试结果。
 - 手动验证步骤。
@@ -89,6 +90,7 @@ Hades 的 AI 写代码纪律。它是上层行为规范，不替代 Java 编码�
 
 ```text
 完成：
+实现后自检：
 验证：
 未验证：
 风险：

@@ -30,8 +30,10 @@ Use this order for code-changing work:
 5. Ask the user to confirm OpenSpec artifacts.
 6. Implement only after confirmation.
 7. Verify.
-8. Prompt for review.
-9. Archive only after user requests archive.
+8. Run post-implementation self-check.
+9. Verify.
+10. Prompt for review.
+11. Archive only after user requests archive.
 
 Do not create GitHub Issues. Use GitHub only for repository access, branches, commits, PRs, and review.
 

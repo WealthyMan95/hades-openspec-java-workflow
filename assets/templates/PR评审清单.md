@@ -15,6 +15,7 @@
 
 ## Java 后端 Review
 
+- [ ] 已完成实现后自检，且无未处理的 `NEEDS_SYNC`、`NEEDS_FIX` 或 `NEEDS_EVIDENCE`。
 - [ ] 每个代码改动都能对应 PRD、OpenSpec 或 `tasks.md`。
 - [ ] 没有未要求功能、无关重构或过度抽象。
 - [ ] 如果是大重构，本 PR 只覆盖一个 phase 或 phase 内一个子任务。
@@ -90,6 +91,7 @@
 
 ## 验证结果
 
+- 实现后自检：
 - 编译：
 - 单测：
 - 集成测试：

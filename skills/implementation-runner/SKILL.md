@@ -74,7 +74,9 @@ openspec instructions apply --change "<name>" --json
 6. Loop through pending tasks until done or blocked.
 7. For each task: announce it, make focused changes, verify when practical, then mark `- [ ]` as `- [x]` immediately.
 8. When build/test fails, use `java-build-fix` for minimal build recovery.
-9. Before declaring implementation complete, use `java-test-strategy` to confirm test coverage and manual verification evidence.
+9. After code changes are complete and before final verification, use `post-implementation-check`.
+10. If the self-check returns `NEEDS_SYNC`, `NEEDS_FIX`, or `NEEDS_EVIDENCE`, address that result before continuing.
+11. Before declaring implementation complete, use `java-test-strategy` to confirm test coverage and manual verification evidence.
 
 ## Pause Conditions
 
@@ -87,6 +89,7 @@ Pause when:
 - OpenSpec reports blocked state
 - tests or build fail in a scope-changing way
 - CodeGraph impact, SQL EXPLAIN, MySQL safety evidence, or security review is required but missing
+- post-implementation self-check reports `NEEDS_SYNC`, `NEEDS_FIX`, or `NEEDS_EVIDENCE`
 - user interrupts
 
 Suggest updating PRD docs and OpenSpec artifacts if implementation reveals design issues.
@@ -103,7 +106,7 @@ Suggest updating PRD docs and OpenSpec artifacts if implementation reveals desig
 ### Completed This Session
 - [x] Task 1
 
-All tasks complete! You can archive this change with `/opsx:archive`.
+All tasks complete, post-implementation self-check passed, and verification is ready for Review Gate.
 ```
 
-Then enter the review gate.
+Before this output, run `post-implementation-check`, then final verification. After this output, enter the review gate.

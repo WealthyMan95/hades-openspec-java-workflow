@@ -18,8 +18,9 @@ pending / ready / running / blocked / failed / retrying / done / accepted / aban
 | 002 |  | OpenSpec | pending | 0 |  |  |  |
 | 003 |  | Implementation | pending | 0 |  |  |  |
 | 004 |  | Implementation | pending | 0 |  |  |  |
-| 005 |  | Test | pending | 0 |  |  |  |
-| 006 | Claude | Review | pending | 0 |  |  |  |
+| 005 | Leader Codex | PostCheck | pending | 0 |  |  |  |
+| 006 |  | Test | pending | 0 |  |  |  |
+| 007 | Claude | Review | pending | 0 |  |  |  |
 
 ## Worker 时间和资源
 
@@ -31,6 +32,7 @@ pending / ready / running / blocked / failed / retrying / done / accepted / aban
 | 004 |  |  |  |  |  |
 | 005 |  |  |  |  |  |
 | 006 |  |  |  |  |  |
+| 007 |  |  |  |  |  |
 
 ## 进度更新
 

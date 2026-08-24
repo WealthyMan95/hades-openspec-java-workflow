@@ -14,7 +14,8 @@ Map user intent to OpenSpec CLI actions while preserving Hades gates.
 | `生成 OpenSpec`, `创建计划`, `/opsx:propose` | Use `openspec-planner` after PRD confirmation. |
 | `查看计划`, `当前状态`, `status` | Run `openspec status --change "<name>"`. |
 | `执行计划`, `开始实现`, `/opsx:apply` | Use `implementation-runner` after PRD and OpenSpec confirmation. |
-| `验证计划`, `检查 OpenSpec` | Run `openspec validate <name>` and project tests when applicable. |
+| `实现后自检`, `自检一下`, `post implementation check` | Use `post-implementation-check` before final verification or review. |
+| `验证计划`, `检查 OpenSpec` | Run `openspec validate <name>` and project tests when applicable, after post-implementation self-check when code was changed. |
 | `归档计划`, `/opsx:archive` | Validate first, then run `openspec archive <name> --yes`. |
 | `继续计划`, `/opsx:continue` | Continue creating or updating artifacts according to OpenSpec status/instructions. |
 
@@ -32,5 +33,6 @@ Always announce the selected change and how to override it.
 
 - Do not propose before PRD confirmation.
 - Do not apply before OpenSpec confirmation.
+- Do not run final verification or enter Review Gate after code changes until post-implementation self-check is complete.
 - Do not archive before implementation and review state are acceptable.
 - Do not create GitHub Issues.
