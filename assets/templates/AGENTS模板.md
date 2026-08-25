@@ -98,7 +98,8 @@
 ## CodeGraph 代码图谱规则
 
 - 陌生代码、跨模块需求、接口/Service/Mapper 改动前先定位影响面。
-- 优先使用 CodeGraph。
+- 优先使用 CodeGraph；使用前先确认 CodeGraph CLI/MCP/索引状态。
+- CodeGraph 未安装、agent 未接入或项目未初始化时，必须说明将执行的安装、`codegraph install` 或 `codegraph init` 命令，并等用户明确同意后再执行。
 - 优先查 `codegraph_context`、`codegraph_trace`、`codegraph_impact`。
 - 修改前查入口、调用链、影响面。
 - 修改后 PR 前复查 impact。
@@ -219,7 +220,7 @@
 ## 工具失败处理
 
 - OpenSpec 命令失败：停止实现，记录命令、错误、当前 change-id，先修 OpenSpec 状态。
-- CodeGraph 不可用：降级到 `rg` / `find`(bash) 或 `Get-ChildItem`(PowerShell) / 文件读取手动追踪，并在 PR 中说明。
+- CodeGraph 不可用或用户不同意初始化：降级到 `rg` / `find`(bash) 或 `Get-ChildItem`(PowerShell) / 文件读取手动追踪，并在 PR 中说明。
 - MySQL MCP 失败：不绕过安全规则；改为生成 SQL 和人工执行步骤。
 - SQL 性能证据缺失：先做静态 SQL 性能评审；高风险 SQL 缺少 `EXPLAIN` 时不得给 PASS。
 - 测试命令失败：优先修测试或代码；不能用跳过测试替代。

@@ -44,7 +44,7 @@ For Java/Spring Boot/MyBatis/MySQL tasks, apply these companion skills before ed
 - `springboot-service-patterns` for Controller/Service/Mapper layering, transactions, idempotency, pagination, async jobs, external calls, and observability.
 - `springboot-security-review` when APIs, auth, permissions, sensitive data, imports/exports, SQL injection, CORS/CSRF, or config/secrets are involved.
 - `mysql-db-guard` and `sql-performance-review` when MySQL, Mapper, SQL, lists/search/export, pagination, sorting, indexes, or EXPLAIN evidence are involved.
-- `codegraph-context-guard` when `.codegraph/` exists or impact analysis is needed.
+- `codegraph-environment-guard` and `codegraph-context-guard` when `.codegraph/` exists or impact analysis is needed.
 
 ## Procedure
 

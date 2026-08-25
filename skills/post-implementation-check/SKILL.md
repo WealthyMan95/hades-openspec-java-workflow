@@ -56,12 +56,14 @@ description: Use after OpenSpec implementation code changes are complete and bef
 - `java-coding-standard`：命名、分层、DTO/VO/PO、null、异常、日志。
 - `springboot-service-patterns`：Controller/Service/Mapper、事务、分页、外部调用。
 - `springboot-security-review`：接口、权限、输入、敏感数据、密钥、SQL 注入。
+- `codegraph-context-guard`：调用链、影响面、索引状态和 CodeGraph 降级说明。
 - `sql-performance-review`：Mapper、SQL、列表、搜索、统计、导出、分页、排序、索引。
 - `mysql-db-guard`：MySQL MCP、写入、DELETE、DDL、EXPLAIN、影响行数、回滚确认。
 
 ### 证据缺口
 
 - 检查是否需要补单测、集成测试、回归测试或手动验证步骤。
+- 涉及 Java/Spring/MyBatis 行为变更时，检查是否需要 CodeGraph impact；如果缺少 CLI/MCP 或项目索引，先用 `codegraph-environment-guard` 处理或记录降级风险。
 - 涉及关键 SQL 时检查是否需要 `EXPLAIN` 或等价执行计划证据。
 - 涉及 DB、核心逻辑、权限、状态流转、外部平台写入时检查回滚方案。
 - 无法自动验证时，必须写明环境、步骤、预期、实际和未覆盖风险。
@@ -87,4 +89,3 @@ description: Use after OpenSpec implementation code changes are complete and bef
 - `NEEDS_FIX`：先修复代码或任务勾选，再重新自检。
 - `NEEDS_EVIDENCE`：先补测试、EXPLAIN、手动验证或回滚证据。
 - 全部通过或明确不适用后，才能运行最终验证并进入 Review Gate。
-

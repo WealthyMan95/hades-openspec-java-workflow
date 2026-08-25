@@ -64,6 +64,7 @@ openspec/changes/<change-name>/...
 | `sql-performance-review` | MyBatis/SQL/list/search/export/pagination/sorting/index 性能评审。 |
 | `java-backend-review` | Java/Spring/MyBatis 后端专项代码审查。 |
 | `java-build-fix` | Maven/Gradle/Spring Boot 构建失败最小修复流程。 |
+| `codegraph-environment-guard` | 在使用 CodeGraph 前检查 CLI/MCP/索引；缺失时经用户同意后安装、wire agent 或初始化项目。 |
 | `codegraph-context-guard` | CodeGraph 影响面、调用链、符号定位规则。 |
 | `pr-quality-gate` | PR 前质量门禁：构建、测试、OpenSpec、风险、回滚、文档同步。 |
 | `large-refactor-workflow` | 大重构 Discovery、RFC、测试基线、phase 拆分和小 PR 流程。 |
@@ -154,6 +155,28 @@ openspec update
 ```
 
 如果目标机器没有 Node.js/npm，Hades 不会自动安装 Node.js，需要团队成员先按团队标准安装。
+
+CodeGraph 是可选但推荐的影响面分析工具。Hades 会在仓库存在 `.codegraph/` 或任务需要调用链/影响面证据时预检 CodeGraph；如果未安装、未 wire agent 或项目未初始化，可以在用户明确同意后执行：
+
+macOS/Linux：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh
+codegraph install
+cd <your-project>
+codegraph init
+```
+
+Windows PowerShell：
+
+```powershell
+irm https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.ps1 | iex
+codegraph install
+cd <your-project>
+codegraph init
+```
+
+如果团队偏好 npm，也可以使用 `npm i -g @colbymchenry/codegraph`。Hades 不会静默安装、升级、修改 agent 配置或创建 `.codegraph/`。
 
 之后在 Codex 中说：
 

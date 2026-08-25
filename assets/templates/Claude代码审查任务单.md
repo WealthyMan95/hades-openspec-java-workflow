@@ -57,6 +57,7 @@ $cc:result <job-id>
 - 当前 phase 目标：
 - 当前 phase 明确不改范围：
 - 实现前边界声明：
+- CodeGraph 环境状态 / 降级原因：
 - CodeGraph 影响预判 / impact：
 - 测试计划 / 测试证据：
 - 回滚计划 / 回滚验证：

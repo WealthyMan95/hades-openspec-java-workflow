@@ -1,6 +1,6 @@
 {
   "name": "hades-openspec-java-workflow",
-  "version": "0.4.0+codex.20260825013857",
+  "version": "0.4.0+codex.20260825014625",
   "description": "面向 Java/Spring/MyBatis/MySQL 的 PRD 优先 OpenSpec 交付工作流：需求分析、拆分 PRD、OpenSpec、实现、实现后自检、验证、Review、PR Gate 和归档。",
   "author": {
     "name": "Ethan"
@@ -30,6 +30,8 @@
       "sql-performance",
       "security",
       "codegraph",
+      "codegraph-cli",
+      "impact-analysis",
       "testing",
       "quality-gate",
       "refactor"

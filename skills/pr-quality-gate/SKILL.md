@@ -21,7 +21,7 @@ PR 前门禁。目标：合并前把“能不能交付”说清楚。
 - 偏差已回写 PRD/OpenSpec。
 - 每个代码改动都能对应 PRD、OpenSpec 或 `tasks.md`。
 - 没有未要求的功能、无关重构或过度抽象。
-- 项目有 `.codegraph/` 时，已完成 CodeGraph impact 复查。
+- 项目有 `.codegraph/` 或影响面需要图谱证据时，已先用 `codegraph-environment-guard` 确认 CodeGraph 环境，再完成 CodeGraph impact 复查。
 - 涉及 Java/Spring/MyBatis 行为变更时，AI 必须主动检查 CodeGraph 索引状态；缺少 CodeGraph impact 证据时不能给 PASS。
 - 已填写分段审核基础判断：风险等级、命中条件、是否建议高风险复查、复查方式、复查结论。
 - C 类小改未触发高风险复查时，已写明未触发原因。
@@ -154,7 +154,7 @@ CONDITIONAL：可 PR，但需在描述里标明风险
 - `sql-performance-review` 存在 P0/P1 未修复项：`BLOCKED`。
 - 高风险关键 SQL 缺少 `EXPLAIN`，且没有明确低风险理由：`BLOCKED`。
 - 数据库暂不可访问，但已完成静态 SQL 性能评审且只剩低风险执行计划证据缺口：最多 `CONDITIONAL`，PR 描述必须写明未验证原因和上线观察点。
-- CodeGraph 暂不可用但已手动追踪影响面、风险可控：最多 `CONDITIONAL`，PR 描述必须写明降级原因和未确认风险。
+- CodeGraph 暂不可用、用户不同意初始化或索引无法确认，但已手动追踪影响面且风险可控：最多 `CONDITIONAL`，PR 描述必须写明降级原因和未确认风险。
 - 有行为变更但未列出预期风险、未覆盖风险和上线观察：最多 `CONDITIONAL`，重大风险缺失时 `BLOCKED`。
 - P0/P1 生产问题、revert、重大漏检或回归测试遗漏未生成复盘计划：最多 `CONDITIONAL`；如果缺少根因和修复验证，`BLOCKED`。
 - 已确认可预防问题但没有记录 IMP 改进项，也未说明不记录原因：最多 `CONDITIONAL`。

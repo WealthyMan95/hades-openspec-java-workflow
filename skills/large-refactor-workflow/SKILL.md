@@ -55,7 +55,7 @@ description: Use when a request is a large refactor, architecture change, module
 
 ## Discovery
 
-必须先用 `codegraph-context-guard`：
+必须先用 `codegraph-environment-guard` 确认 CodeGraph CLI/MCP/索引状态，再用 `codegraph-context-guard`：
 
 - 入口。
 - 调用链。
@@ -295,7 +295,7 @@ Claude 是可选 reviewer / critic / rescue，不是默认实现者。
 - Feature flag 可快速切换，若适用。
 - 数据迁移有反向 SQL，若适用。
 - 测试策略已执行：单测 / 集成测试 / 手动验证。
-- CodeGraph impact 已复查，或说明降级追踪方式。
+- CodeGraph environment 已确认，impact 已复查，或说明用户不同意初始化/工具不可用后的降级追踪方式。
 - PR 只覆盖当前 phase 或 phase 内一个子任务。
 
 ## 兼容和回滚

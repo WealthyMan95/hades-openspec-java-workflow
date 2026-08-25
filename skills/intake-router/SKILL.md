@@ -16,7 +16,7 @@ For Java/Spring Boot/MyBatis/MySQL projects, Hades must also apply the Java deli
 - `springboot-service-patterns` when designing or implementing backend services.
 - `springboot-security-review` when APIs, auth, permissions, sensitive data, imports/exports, SQL, or configs are touched.
 - `mysql-db-guard` and `sql-performance-review` when MySQL, MyBatis, Mapper, SQL, list/search/export, pagination, sorting, indexes, or EXPLAIN evidence are involved.
-- `codegraph-context-guard` when `.codegraph/` exists or impact analysis is needed.
+- `codegraph-environment-guard` and `codegraph-context-guard` when `.codegraph/` exists or impact analysis is needed.
 - `java-test-strategy`, `java-backend-review`, and `pr-quality-gate` before PR/merge readiness.
 
 ## Core Rule

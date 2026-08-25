@@ -9,11 +9,11 @@ CodeGraph 使用规则。目标：让 AI 先看知识图谱，再动代码，减
 
 ## 定位
 
-CodeGraph 是外部 MCP/CLI，不属于本插件本体。本 skill 只定义使用纪律。
+CodeGraph 是外部 MCP/CLI，不属于本插件本体。本 skill 定义使用纪律；安装、agent wiring、项目初始化和升级必须先使用 `codegraph-environment-guard`，并在用户明确同意后执行。
 
 ## 什么时候必须用
 
-项目存在 `.codegraph/`，且任务满足任一条件：
+项目存在 `.codegraph/`，或任务需要准确调用链/影响面判断，且满足任一条件：
 
 - 陌生模块。
 - 跨 Controller / Service / Mapper。
@@ -32,6 +32,8 @@ CodeGraph 是外部 MCP/CLI，不属于本插件本体。本 skill 只定义使�
 即使不用，也要在最终说明中讲清楚为什么影响面明确。
 
 ## 查询顺序
+
+开始前先使用 `codegraph-environment-guard` 确认 CodeGraph CLI/MCP 和项目索引是否可用。
 
 优先：
 
@@ -55,7 +57,7 @@ AI 不等用户手动提醒。项目存在 `.codegraph/` 时，涉及 Java/Sprin
 
 ```text
 确认 .codegraph/ 存在
--> 检查 CodeGraph server / MCP 是否可用
+-> 使用 codegraph-environment-guard 检查 CodeGraph server / CLI / MCP 是否可用
 -> 检查 codegraph_status 或工具返回的 stale / pending 信息
 -> 如果有 pending sync，等待短暂同步后复查
 -> 如果仍未同步，说明降级原因并读真实文件兜底
@@ -73,15 +75,19 @@ AI 不等用户手动提醒。项目存在 `.codegraph/` 时，涉及 Java/Sprin
 
 当没有 `.codegraph/`、索引过期、工具不可用或结果明显不足时，按顺序降级：
 
-1. CodeGraph：`.codegraph/` 存在且索引健康。
+1. CodeGraph：CLI/MCP 可用，且 `.codegraph/` 存在、索引健康。
    - `codegraph_context`：确认入口、关键类、影响面。
    - `codegraph_trace`：确认调用链。
    - `codegraph_impact`：确认改动影响。
-2. 手动追踪：CodeGraph 不可用时。
+2. 初始化选择：CodeGraph 未安装或项目未初始化，但影响面需要图谱证据时。
+   - 使用 `codegraph-environment-guard` 说明缺口。
+   - 询问用户是否安装、执行 `codegraph install` 或在项目根目录执行 `codegraph init`。
+   - 用户不同意时，不继续尝试安装或初始化。
+3. 手动追踪：CodeGraph 不可用或用户不同意初始化时。
    - 用 `rg` / `find`(bash) 或 `Get-ChildItem`(PowerShell) 搜索函数名、类名、接口路径、SQL id。
    - 逐文件读取入口、调用方、被调用方。
    - 记录“未用 CodeGraph，可能遗漏”的风险。
-3. 人工 Review：代码量大或影响面仍不确定时。
+4. 人工 Review：代码量大或影响面仍不确定时。
    - PR 标记 `[NEEDS-MANUAL-REVIEW]`。
    - 要求资深开发者复查影响面。
 

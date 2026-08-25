@@ -20,6 +20,7 @@
 - [ ] 没有未要求功能、无关重构或过度抽象。
 - [ ] 如果是大重构，本 PR 只覆盖一个 phase 或 phase 内一个子任务。
 - [ ] 已说明影响面定位方式：CodeGraph / 手动追踪 / 人工 Review。
+- [ ] 如使用 CodeGraph，已确认 CLI/MCP/索引状态；如未使用，已说明用户不同意初始化或工具不可用的降级原因。
 - [ ] 已复查影响面或说明无法复查原因。
 - [ ] 已按 Java 编码规范检查命名、异常、日志、MyBatis、测试。
 - [ ] 已按 Spring Boot 服务规则检查 Controller/Service/Mapper 分层。
@@ -99,6 +100,7 @@
 - 回滚验证：
 - 未覆盖项：
 - 安全检查：
+- CodeGraph 环境状态：
 - CodeGraph impact：
 
 ## 预期风险
