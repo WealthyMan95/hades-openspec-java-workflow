@@ -5,7 +5,7 @@ description: Use when a request may come from Asana, Notion, user conversation, 
 
 # Intake Router
 
-Route incoming work into the Hades OpenSpec Workflow.
+Route incoming work into the Hades Openspec Java Workflow.
 
 ## Project Bias
 

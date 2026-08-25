@@ -1,6 +1,6 @@
 # 数据库 MCP 配置指南
 
-Hades OpenSpec Workflow 以 Java/Spring/MyBatis/MySQL 交付为主，优先使用 `mysql-db-guard` 约束 MySQL MCP、SQL、EXPLAIN、写入、DDL 和回滚。非 MySQL 的内部数据库 MCP 可以使用 `db-query-guard` 作为通用兜底。
+Hades Openspec Java Workflow 以 Java/Spring/MyBatis/MySQL 交付为主，优先使用 `mysql-db-guard` 约束 MySQL MCP、SQL、EXPLAIN、写入、DDL 和回滚。非 MySQL 的内部数据库 MCP 可以使用 `db-query-guard` 作为通用兜底。
 
 仓库只提供规则和模板，不会把真实数据库账号、host、密码或 token 打包进 GitHub。
 
@@ -75,7 +75,7 @@ FILE
 复制模板：
 
 ```bash
-cd ~/plugins/hades-openspec-workflow
+cd ~/plugins/hades-openspec-java-workflow
 cp .mcp.example.json .mcp.json
 ```
 

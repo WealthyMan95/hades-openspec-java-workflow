@@ -7,7 +7,7 @@ description: Use when reviewing Java, Spring Boot, MyBatis, SQL, transaction log
 
 面向 Java/Spring/MyBatis 后端的专项评审。先看风险，再看风格。
 
-评审前先应用 `hades-openspec-workflow:coding-discipline`：确认改动是否小范围、是否有 PRD/OpenSpec 依据、是否存在无关重构或过度设计。写法问题优先参考 `java-coding-standard`，Spring 服务结构优先参考 `springboot-service-patterns`。
+评审前先应用 `hades-openspec-java-workflow:coding-discipline`：确认改动是否小范围、是否有 PRD/OpenSpec 依据、是否存在无关重构或过度设计。写法问题优先参考 `java-coding-standard`，Spring 服务结构优先参考 `springboot-service-patterns`。
 
 如果改动涉及 Mapper/SQL、列表/搜索/统计/导出接口、分页排序、动态查询条件、索引、或 Service 循环查库，必须按 `sql-performance-review` 审查模式检查 SQL。Java Review 不能用“功能可用”替代 SQL 性能结论。
 

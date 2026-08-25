@@ -1,15 +1,15 @@
 {
-  "name": "hades-openspec-workflow",
-  "version": "0.4.0+codex.20260824082715",
+  "name": "hades-openspec-java-workflow",
+  "version": "0.4.0+codex.20260825012710",
   "description": "面向 Java/Spring/MyBatis/MySQL 的 PRD 优先 OpenSpec 交付工作流：需求分析、拆分 PRD、OpenSpec、实现、实现后自检、验证、Review、PR Gate 和归档。",
   "author": {
     "name": "Ethan"
   },
   "skills": "./skills/",
   "interface": {
-    "displayName": "Hades OpenSpec Workflow",
+    "displayName": "Hades Openspec Java Workflow",
     "shortDescription": "Java/Spring/MyBatis/MySQL 的 PRD-first OpenSpec 交付、自检、Review 和质量门禁。",
-    "longDescription": "Hades OpenSpec Workflow 固化一条面向 Java/Spring/MyBatis/MySQL 的 PRD 优先交付闭环：需求分析、按影响范围拆分中文 PRD 文档、用户确认、生成 OpenSpec artifacts、确认后实现、实现后自检、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate、归档，以及安全的内部数据库 MCP 访问。它不会创建 GitHub Issues。",
+    "longDescription": "Hades Openspec Java Workflow 固化一条面向 Java/Spring/MyBatis/MySQL 的 PRD 优先交付闭环：需求分析、按影响范围拆分中文 PRD 文档、用户确认、生成 OpenSpec artifacts、确认后实现、实现后自检、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate、归档，以及安全的内部数据库 MCP 访问。它不会创建 GitHub Issues。",
     "developerName": "Ethan",
     "category": "Productivity",
     "capabilities": [

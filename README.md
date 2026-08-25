@@ -1,6 +1,6 @@
-# Hades OpenSpec Workflow
+# Hades Openspec Java Workflow
 
-Hades OpenSpec Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交付工作流插件。它把来自 Asana、Notion、用户对话、Figma、Stripe、Cloudflare、GitHub PR、内部数据库等入口的信息，统一推进为中文 PRD、OpenSpec change、确认后的实现、实现后自检、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate 和归档。
+Hades Openspec Java Workflow 是一个面向 Codex 的 Java/Spring/MyBatis/MySQL 交付工作流插件。它把来自 Asana、Notion、用户对话、Figma、Stripe、Cloudflare、GitHub PR、内部数据库等入口的信息，统一推进为中文 PRD、OpenSpec change、确认后的实现、实现后自检、测试验证、Java/Spring/Security/SQL/MySQL Review、PR Quality Gate 和归档。
 
 这个插件不创建 GitHub Issues。GitHub 只用于仓库访问、分支、提交、PR 和代码审查。
 
@@ -70,9 +70,9 @@ openspec/changes/<change-name>/...
 在 Codex 中安装后，skill 名称通常会以插件名前缀暴露，例如：
 
 ```text
-hades-openspec-workflow:prd-writer
-hades-openspec-workflow:openspec-planner
-hades-openspec-workflow:implementation-runner
+hades-openspec-java-workflow:prd-writer
+hades-openspec-java-workflow:openspec-planner
+hades-openspec-java-workflow:implementation-runner
 ```
 
 ## 外部平台支持边界
@@ -113,15 +113,15 @@ skills/sql-performance-review/SKILL.md
 macOS / Linux：
 
 ```bash
-git clone https://github.com/<owner>/hades-openspec-workflow.git ~/plugins/hades-openspec-workflow
-codex plugin add hades-openspec-workflow@personal
+git clone https://github.com/<owner>/hades-openspec-java-workflow.git ~/plugins/hades-openspec-java-workflow
+codex plugin add hades-openspec-java-workflow@personal
 ```
 
 Windows PowerShell：
 
 ```powershell
-git clone https://github.com/<owner>/hades-openspec-workflow.git "$env:USERPROFILE\plugins\hades-openspec-workflow"
-codex plugin add hades-openspec-workflow@personal
+git clone https://github.com/<owner>/hades-openspec-java-workflow.git "$env:USERPROFILE\plugins\hades-openspec-java-workflow"
+codex plugin add hades-openspec-java-workflow@personal
 ```
 
 首次安装前如果还没有 personal marketplace，请按 [团队安装指南.md](./团队安装指南.md) 创建 `~/.agents/plugins/marketplace.json`。
@@ -143,7 +143,7 @@ openspec update
 之后在 Codex 中说：
 
 ```text
-请使用 Hades OpenSpec Workflow 处理这个需求。先做需求分析并生成 PRD 文档，不要直接写代码。
+请使用 Hades Openspec Java Workflow 处理这个需求。先做需求分析并生成 PRD 文档，不要直接写代码。
 ```
 
 PRD 确认后：
@@ -171,12 +171,12 @@ OpenSpec 已确认，执行计划。
 维护者可以把本目录直接作为 GitHub 仓库发布：
 
 ```bash
-cd ~/plugins/hades-openspec-workflow
+cd ~/plugins/hades-openspec-java-workflow
 git init
 git branch -M main
 git add .
-git commit -m "feat: add Hades OpenSpec workflow plugin"
-git remote add origin https://github.com/<owner>/hades-openspec-workflow.git
+git commit -m "feat: add Hades Openspec Java workflow plugin"
+git remote add origin https://github.com/<owner>/hades-openspec-java-workflow.git
 git push -u origin main
 ```
 

@@ -1,6 +1,6 @@
 ---
 name: java-coding-standard
-description: Use when writing or reviewing Java/Spring/MyBatis code in Hades OpenSpec Workflow, including naming, package structure, DTO/VO/PO boundaries, null safety, exceptions, logging, collections, MyBatis SQL, and tests.
+description: Use when writing or reviewing Java/Spring/MyBatis code in Hades Openspec Java Workflow, including naming, package structure, DTO/VO/PO boundaries, null safety, exceptions, logging, collections, MyBatis SQL, and tests.
 ---
 
 # Java Coding Standard

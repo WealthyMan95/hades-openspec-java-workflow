@@ -1,6 +1,6 @@
 ---
 name: coding-discipline
-description: Use before writing, modifying, refactoring, or reviewing Java/Spring/MyBatis code in Hades OpenSpec Workflow, especially when scope could drift, requirements are ambiguous, implementation may overgrow, or verification evidence is needed.
+description: Use before writing, modifying, refactoring, or reviewing Java/Spring/MyBatis code in Hades Openspec Java Workflow, especially when scope could drift, requirements are ambiguous, implementation may overgrow, or verification evidence is needed.
 ---
 
 # Coding Discipline
