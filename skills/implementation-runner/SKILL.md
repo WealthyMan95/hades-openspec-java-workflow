@@ -32,7 +32,8 @@ Before implementation:
 1. PRD docs exist and are user-confirmed.
 2. OpenSpec artifacts exist and are user-confirmed.
 3. The selected change is active.
-4. `coding-discipline` assumptions, scope, non-goals, verification, and risks are clear.
+4. `openspec-environment-guard` confirms OpenSpec CLI and project initialization.
+5. `coding-discipline` assumptions, scope, non-goals, verification, and risks are clear.
 
 Do not implement behavior changes before PRD and OpenSpec confirmation.
 
@@ -47,7 +48,8 @@ For Java/Spring Boot/MyBatis/MySQL tasks, apply these companion skills before ed
 
 ## Procedure
 
-1. Run:
+1. Verify OpenSpec environment with `openspec-environment-guard`.
+2. Run:
 
 ```bash
 openspec status --change "<name>" --json
@@ -55,13 +57,13 @@ openspec status --change "<name>" --json
 
 Parse `schemaName` and task artifact information.
 
-2. Run:
+3. Run:
 
 ```bash
 openspec instructions apply --change "<name>" --json
 ```
 
-3. Handle states:
+4. Handle states:
 
 | State | Behavior |
 | --- | --- |
@@ -69,14 +71,14 @@ openspec instructions apply --change "<name>" --json
 | `all_done` | Congratulate, suggest `/opsx:archive`, stop. |
 | implementable | Continue. |
 
-4. Read every file listed under `contextFiles`. Do not assume file names.
-5. Show schema, progress, remaining tasks, and dynamic instruction.
-6. Loop through pending tasks until done or blocked.
-7. For each task: announce it, make focused changes, verify when practical, then mark `- [ ]` as `- [x]` immediately.
-8. When build/test fails, use `java-build-fix` for minimal build recovery.
-9. After code changes are complete and before final verification, use `post-implementation-check`.
-10. If the self-check returns `NEEDS_SYNC`, `NEEDS_FIX`, or `NEEDS_EVIDENCE`, address that result before continuing.
-11. Before declaring implementation complete, use `java-test-strategy` to confirm test coverage and manual verification evidence.
+5. Read every file listed under `contextFiles`. Do not assume file names.
+6. Show schema, progress, remaining tasks, and dynamic instruction.
+7. Loop through pending tasks until done or blocked.
+8. For each task: announce it, make focused changes, verify when practical, then mark `- [ ]` as `- [x]` immediately.
+9. When build/test fails, use `java-build-fix` for minimal build recovery.
+10. After code changes are complete and before final verification, use `post-implementation-check`.
+11. If the self-check returns `NEEDS_SYNC`, `NEEDS_FIX`, or `NEEDS_EVIDENCE`, address that result before continuing.
+12. Before declaring implementation complete, use `java-test-strategy` to confirm test coverage and manual verification evidence.
 
 ## Pause Conditions
 

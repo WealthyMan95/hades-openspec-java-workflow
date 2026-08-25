@@ -48,6 +48,7 @@ openspec/changes/<change-name>/...
 | `prd-writer` | 在实现前生成中文 PRD 文档组。 |
 | `prd-split-docs` | 按影响范围决定是否创建原型、接口、数据库、技术设计文档。 |
 | `sync-guard` | 当需求或规则变化时，同步 PRD 与 OpenSpec。 |
+| `openspec-environment-guard` | 在运行 OpenSpec 前检查 CLI 和项目初始化；缺失时经用户同意后按平台安装。 |
 | `openspec-command-router` | 把自然语言和 `/opsx:*` 映射到 OpenSpec CLI 操作。 |
 | `openspec-planner` | 执行 `/opsx:propose`，创建 change 并生成 artifacts。 |
 | `implementation-runner` | 执行 `/opsx:apply`，按 tasks 实现并更新任务勾选。 |
@@ -130,7 +131,9 @@ codex plugin add hades-openspec-java-workflow@personal
 
 ## 项目接入
 
-目标项目需要安装并初始化 OpenSpec：
+目标项目需要安装并初始化 OpenSpec。Hades 会在运行 `/opsx:propose`、`/opsx:apply`、`/opsx:archive` 或直接 `openspec` 命令前做环境预检；如果未安装 OpenSpec，可以在用户明确同意后帮忙执行安装命令。
+
+macOS/Linux：
 
 ```bash
 npm install -g @fission-ai/openspec@latest
@@ -139,6 +142,18 @@ openspec init
 openspec config profile
 openspec update
 ```
+
+Windows PowerShell：
+
+```powershell
+npm.cmd install -g @fission-ai/openspec@latest
+cd <your-project>
+openspec init
+openspec config profile
+openspec update
+```
+
+如果目标机器没有 Node.js/npm，Hades 不会自动安装 Node.js，需要团队成员先按团队标准安装。
 
 之后在 Codex 中说：
 

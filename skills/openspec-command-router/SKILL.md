@@ -7,6 +7,10 @@ description: Use when the user asks to generate, continue, inspect, apply, execu
 
 Map user intent to OpenSpec CLI actions while preserving Hades gates.
 
+## Environment
+
+Before running any `openspec` CLI command, use `openspec-environment-guard` to verify the CLI exists and the target project is initialized. If OpenSpec is missing, install only after explicit user approval.
+
 ## Natural Language Mapping
 
 | User intent | Action |
@@ -18,6 +22,7 @@ Map user intent to OpenSpec CLI actions while preserving Hades gates.
 | `验证计划`, `检查 OpenSpec` | Run `openspec validate <name>` and project tests when applicable, after post-implementation self-check when code was changed. |
 | `归档计划`, `/opsx:archive` | Validate first, then run `openspec archive <name> --yes`. |
 | `继续计划`, `/opsx:continue` | Continue creating or updating artifacts according to OpenSpec status/instructions. |
+| `安装 OpenSpec`, `OpenSpec 未安装`, `找不到 openspec` | Use `openspec-environment-guard`; install only after explicit user approval. |
 
 ## Change Selection
 

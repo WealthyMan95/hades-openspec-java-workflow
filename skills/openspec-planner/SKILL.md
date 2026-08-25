@@ -26,6 +26,7 @@ Before creating OpenSpec:
 2. Confirm the entry document and `需求PRD` exist.
 3. Confirm all affected optional PRD split docs exist.
 4. Confirm the user approved the PRD document group.
+5. Use `openspec-environment-guard` to verify OpenSpec CLI and project initialization before running `openspec` commands.
 
 For Java/Spring Boot/MyBatis/MySQL work, ensure the OpenSpec artifacts reflect:
 
@@ -39,32 +40,33 @@ For Java/Spring Boot/MyBatis/MySQL work, ensure the OpenSpec artifacts reflect:
 
 1. Derive or accept a lowercase kebab-case change name.
 2. If the change exists, ask whether to continue it or use another name.
-3. Run:
+3. Verify OpenSpec environment with `openspec-environment-guard`.
+4. Run:
 
 ```bash
 openspec new change "<name>"
 openspec status --change "<name>" --json
 ```
 
-4. Parse `applyRequires`, artifact statuses, dependencies, and output paths.
-5. For each ready artifact in dependency order, run:
+5. Parse `applyRequires`, artifact statuses, dependencies, and output paths.
+6. For each ready artifact in dependency order, run:
 
 ```bash
 openspec instructions <artifact-id> --change "<name>" --json
 ```
 
-6. Read dependency artifacts before creating dependent artifacts.
-7. Use `template` as the artifact structure and `instruction` as artifact guidance.
-8. Treat `context` and `rules` as constraints. Do not copy internal instruction blocks into artifact files.
-9. Re-run status after each artifact.
-10. Stop when every artifact in `applyRequires` is `done`.
-11. Run final human-readable status:
+7. Read dependency artifacts before creating dependent artifacts.
+8. Use `template` as the artifact structure and `instruction` as artifact guidance.
+9. Treat `context` and `rules` as constraints. Do not copy internal instruction blocks into artifact files.
+10. Re-run status after each artifact.
+11. Stop when every artifact in `applyRequires` is `done`.
+12. Run final human-readable status:
 
 ```bash
 openspec status --change "<name>"
 ```
 
-12. Report created artifacts and ask the user to confirm OpenSpec before implementation.
+13. Report created artifacts and ask the user to confirm OpenSpec before implementation.
 
 ## Output
 

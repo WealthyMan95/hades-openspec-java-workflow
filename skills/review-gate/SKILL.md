@@ -35,6 +35,6 @@ Then tell the user:
 - For PR readiness, apply `pr-quality-gate` before merge/archive readiness is claimed.
 - If the user provides review feedback, validate it before changing code.
 - If feedback changes requirements, invoke `sync-guard` before continuing.
-- If the user asks to archive, validate and archive through OpenSpec.
+- If the user asks to archive, use `openspec-environment-guard`, then validate and archive through OpenSpec.
 
 Do not archive automatically just because implementation is complete.
